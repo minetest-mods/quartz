@@ -10,6 +10,10 @@ minetest.register_craftitem("quartz:quartz_crystal", {
 	description = "Quartz Crystal",
 	inventory_image = "quartz_crystal_full.png",
 })
+minetest.register_craftitem("quartz:quartz_crystal_piece", {
+	description = "Quartz Crystal Piece",
+	inventory_image = "quartz_crystal_piece.png",
+})
 
 --Ore
 minetest.register_node("quartz:quartz_ore", {
@@ -87,6 +91,14 @@ stairs.register_slab("quartzstair", "quartz:pillar",
 		
 		
 --Crafting
+
+--Quartz Crystal Piece
+minetest.register_craft({
+	output = '"quartz:quartz_crystal_piece" 3',
+	recipe = {
+		{'quartz:quartz_crystal'}
+	}
+})
 
 --Quartz Block
 minetest.register_craft({
