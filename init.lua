@@ -1,8 +1,3 @@
---dofiles
-
-
-
-
 --Node Registration
 
 --Quartz Crystal
@@ -39,24 +34,24 @@ minetest.register_ore({
 minetest.register_node("quartz:block", {
 	description = "Quartz Block",
 	tiles = {"quartz_block.png"},
-	groups = {snappy=1,bendy=2,cracky=1,level=2},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky=3, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_glass_defaults(),
 })
 
 --Chiseled Quartz
 minetest.register_node("quartz:chiseled", {
 	description = "Chiseled Quartz",
 	tiles = {"quartz_chiseled.png"},
-	groups = {snappy=1,bendy=2,cracky=1,level=2},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky=3, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_glass_defaults(),
 })
 
 --Quartz Pillar
 minetest.register_node("quartz:pillar", {
 	description = "Quartz Pillar",
 	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
-	groups = {snappy=1,bendy=2,cracky=1,level=2},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky=3, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_glass_defaults(),
 })
 
 --Quartz Pillar (horizontal)
@@ -65,24 +60,24 @@ minetest.register_node("quartz:pillar_horizontal", {
 	tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
 	"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
 	paramtype2 = "facedir",
-	groups = {snappy=1,bendy=2,cracky=1,level=2},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky=3, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_glass_defaults(),
 })
 
 --Stairs & Slabs
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
-		{snappy=1,bendy=2,cracky=1,level=2},
+		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_block.png"},
 		"Quartz stair",
 		"Quartz slab",
-		default.node_sound_stone_defaults())
+		default.node_sound_glass_defaults())
 
 stairs.register_slab("quartzstair", "quartz:pillar",
-		{snappy=1,bendy=2,cracky=1,level=2},
+		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
 		"Quartz Pillar stair",
 		"Quartz Pillar slab",
-		default.node_sound_stone_defaults())		
+		default.node_sound_glass_defaults())		
 
 		
 		
@@ -157,9 +152,3 @@ minetest.register_craft({
 		{'', '', ''},
 	}
 })
-
-
-
-
-
---Functions
