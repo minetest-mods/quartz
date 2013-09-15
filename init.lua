@@ -97,7 +97,7 @@ minetest.register_craft({
 
 --Quartz Block
 minetest.register_craft({
-	output = 'quartz:block',
+	output = 'quartz:block" 4',
 	recipe = {
 		{'quartz:quartz_crystal', 'quartz:quartz_crystal', ''},
 		{'quartz:quartz_crystal', 'quartz:quartz_crystal', ''},
