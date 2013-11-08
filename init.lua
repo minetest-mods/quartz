@@ -49,20 +49,13 @@ minetest.register_node("quartz:chiseled", {
 --Quartz Pillar
 minetest.register_node("quartz:pillar", {
 	description = "Quartz Pillar",
+	paramtype2 = "facedir",
 	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
+	on_place = minetest.rotate_node
 })
 
---Quartz Pillar (horizontal)
-minetest.register_node("quartz:pillar_horizontal", {
-        description = "Quartz Pillar Horizontal",
-	tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
-	"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
-	paramtype2 = "facedir",
-	groups = {cracky=3, oddly_breakable_by_hand=1},
-	sounds = default.node_sound_glass_defaults(),
-})
 
 --Stairs & Slabs
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
@@ -125,30 +118,3 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = 'quartz:pillar 2',
-	recipe = {
-		{'quartz:pillar_horizontal', '', ''},
-		{'quartz:pillar_horizontal', '', ''},
-		{'', '', ''},
-	}
-})
-
---Quartz Pillar (horizontal)
-minetest.register_craft({
-	output = 'quartz:pillar_horizontal 2',
-	recipe = {
-		{'', '', ''},
-		{'quartz:block', 'quartz:block', ''},
-		{'', '', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'quartz:pillar_horizontal 2',
-	recipe = {
-		{'', '', ''},
-		{'quartz:pillar', 'quartz:pillar', ''},
-		{'', '', ''},
-	}
-})

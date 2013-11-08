@@ -28,14 +28,6 @@ x|q|x
 -----
 x|x|x
 
-Quartz Pillar (horizontal):
-q = quartz block x = nothing
-
-x|x|x
------
-x|x|x
------
-q|q|x
 
 Quartz Slab:
 q = quartz block x = nothing
