@@ -90,7 +90,7 @@ minetest.register_craft({
 
 --Quartz Block
 minetest.register_craft({
-	output = 'quartz:block" 4',
+	output = '"quartz:block" 4',
 	recipe = {
 		{'quartz:quartz_crystal', 'quartz:quartz_crystal', ''},
 		{'quartz:quartz_crystal', 'quartz:quartz_crystal', ''},
@@ -116,5 +116,32 @@ minetest.register_craft({
 		{'quartz:block', '', ''},
 		{'', '', ''},
 	}
+})
+
+--abms
+local dirs2 = { 12, 9, 18, 7, 12 }
+
+minetest.register_abm({
+	nodenames = { "quartz:pillar_horizontal" },
+	interval = 1,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		local fdir = node.param2 or 0
+			nfdir = dirs2[fdir+1]
+		minetest.add_node(pos, {name = "quartz:pillar", param2 = nfdir})
+	end,
+})
+
+--These are deprecated, don't use them
+
+--Quartz Pillar (horizontal)
+minetest.register_node("quartz:pillar_horizontal", {
+        description = "Quartz Pillar Horizontal",
+        tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
+        "quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
+        paramtype2 = "facedir",
+        drop = 'quartz:pillar',
+        groups = {cracky=3, oddly_breakable_by_hand=1},
+        sounds = default.node_sound_glass_defaults(),
 })
 
