@@ -110,6 +110,16 @@ minetest.register_craft({
 	}
 })
 
+--Chiseled Quartz(for stairsplus)
+minetest.register_craft({
+	output = 'quartz:chiseled 2',
+	recipe = {
+		{'quartz:slab_block', '', ''},
+		{'quartz:slab_block', '', ''},
+		{'', '', ''},
+	}
+})
+
 --Quartz Pillar
 minetest.register_craft({
 	output = 'quartz:pillar 2',
