@@ -1,0 +1,3 @@
+-- Set this to true to allow usage of the stairsplus mod in moreblocks
+
+enable_stairsplus = false
