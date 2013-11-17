@@ -146,16 +146,18 @@ minetest.register_abm({
 
 --These are deprecated, don't use them
 
---Quartz Pillar (horizontal)
-minetest.register_node("quartz:pillar_horizontal", {
-        description = "Quartz Pillar Horizontal",
-        tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
-        "quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
-        paramtype2 = "facedir",
-        drop = 'quartz:pillar',
-        groups = {cracky=3, oddly_breakable_by_hand=1},
-        sounds = default.node_sound_glass_defaults(),
-})
+if enable_horizontal_pillar then
+	--Quartz Pillar (horizontal)
+	minetest.register_node("quartz:pillar_horizontal", {
+			description = "Quartz Pillar Horizontal",
+			tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
+			"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
+			paramtype2 = "facedir",
+			drop = 'quartz:pillar',
+			groups = {cracky=3, oddly_breakable_by_hand=1, not_in_creative_inventory=1},
+			sounds = default.node_sound_glass_defaults(),
+	})
+end
 
 
 --Compatibility with stairsplus
