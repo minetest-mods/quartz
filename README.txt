@@ -10,6 +10,7 @@ Version: 1.0.0
 License: MIT (see LICENSE.txt)
 
 Dependencies:
+default (found in minetest_game)
 stairs (found in minetest_game)
 moreblocks (optional, for stairsplus support)
 
