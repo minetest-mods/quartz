@@ -1,8 +1,10 @@
 dofile(minetest.get_modpath("quartz").."/settings.txt")
 
---Node Registration
+--
+--  Item Registration
+--
 
---Quartz Crystal
+--  Quartz Crystal
 minetest.register_craftitem("quartz:quartz_crystal", {
 	description = "Quartz Crystal",
 	inventory_image = "quartz_crystal_full.png",
@@ -12,27 +14,31 @@ minetest.register_craftitem("quartz:quartz_crystal_piece", {
 	inventory_image = "quartz_crystal_piece.png",
 })
 
---Ore
+--
+-- Node Registration
+--
+
+--  Ore
 minetest.register_node("quartz:quartz_ore", {
-         description = "Quartz Ore",
- 	 tiles = {"default_stone.png^quartz_ore.png"},
-	 groups = {cracky=3, stone=1},
-	 drop = 'quartz:quartz_crystal',
-         sounds = default.node_sound_stone_defaults(),
-})
-	 
-minetest.register_ore({
-    ore_type       = "scatter",
-    ore            = "quartz:quartz_ore",
-    wherein        = "default:stone",
-    clust_scarcity = 10*10*10,
-    clust_num_ores = 6,
-    clust_size     = 5,
-    y_min     = -31000,
-    y_max     = -5,
+	description = "Quartz Ore",
+	tiles = {"default_stone.png^quartz_ore.png"},
+	groups = {cracky=3, stone=1},
+	drop = 'quartz:quartz_crystal',
+	sounds = default.node_sound_stone_defaults(),
 })
 
---Quartz Block
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "quartz:quartz_ore",
+	wherein = "default:stone",
+	clust_scarcity = 10*10*10,
+	clust_num_ores = 6,
+	clust_size = 5,
+	y_min = -31000,
+	y_max = -5,
+})
+
+-- Quartz Block
 minetest.register_node("quartz:block", {
 	description = "Quartz Block",
 	tiles = {"quartz_block.png"},
@@ -40,7 +46,7 @@ minetest.register_node("quartz:block", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
---Chiseled Quartz
+-- Chiseled Quartz
 minetest.register_node("quartz:chiseled", {
 	description = "Chiseled Quartz",
 	tiles = {"quartz_chiseled.png"},
@@ -48,7 +54,7 @@ minetest.register_node("quartz:chiseled", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
---Quartz Pillar
+-- Quartz Pillar
 minetest.register_node("quartz:pillar", {
 	description = "Quartz Pillar",
 	paramtype2 = "facedir",
@@ -58,8 +64,7 @@ minetest.register_node("quartz:pillar", {
 	on_place = minetest.rotate_node
 })
 
-
---Stairs & Slabs
+-- Stairs & Slabs
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_block.png"},
@@ -72,17 +77,13 @@ stairs.register_slab("quartzstair", "quartz:pillar",
 		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
 		"Quartz Pillar stair",
 		"Quartz Pillar slab",
-		default.node_sound_glass_defaults())		
+		default.node_sound_glass_defaults())
 
-		
-		
-		
-		
-		
-		
---Crafting
+--
+-- Crafting
+--
 
---Quartz Crystal Piece
+-- Quartz Crystal Piece
 minetest.register_craft({
 	output = '"quartz:quartz_crystal_piece" 3',
 	recipe = {
@@ -90,7 +91,7 @@ minetest.register_craft({
 	}
 })
 
---Quartz Block
+-- Quartz Block
 minetest.register_craft({
 	output = '"quartz:block" 4',
 	recipe = {
@@ -99,8 +100,8 @@ minetest.register_craft({
 		{'', '', ''}
 	}
 })
-	
---Chiseled Quartz
+
+-- Chiseled Quartz
 minetest.register_craft({
 	output = 'quartz:chiseled 2',
 	recipe = {
@@ -110,7 +111,7 @@ minetest.register_craft({
 	}
 })
 
---Chiseled Quartz(for stairsplus)
+-- Chiseled Quartz (for stairsplus)
 minetest.register_craft({
 	output = 'quartz:chiseled 2',
 	recipe = {
@@ -120,7 +121,7 @@ minetest.register_craft({
 	}
 })
 
---Quartz Pillar
+-- Quartz Pillar
 minetest.register_craft({
 	output = 'quartz:pillar 2',
 	recipe = {
@@ -130,11 +131,15 @@ minetest.register_craft({
 	}
 })
 
---abms
-local dirs2 = { 12, 9, 18, 7, 12 }
+--
+-- ABMS
+--
 
+local dirs2 = {12, 9, 18, 7, 12}
+
+-- Replace all instances of the horizontal quartz pillar with the
 minetest.register_abm({
-	nodenames = { "quartz:pillar_horizontal" },
+	nodenames = {"quartz:pillar_horizontal"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
@@ -144,10 +149,46 @@ minetest.register_abm({
 	end,
 })
 
---These are deprecated, don't use them
+--
+-- Compatibility with stairsplus
+--
+
+if minetest.get_modpath("moreblocks") and enable_stairsplus then
+	register_stair_slab_panel_micro("quartz", "block", "quartz:block",
+		{cracky=3},
+		{"quartz_block.png"},
+		"Quartz Block",
+		"block",
+		0
+	)
+
+	register_stair_slab_panel_micro("quartz", "chiseled", "quartz:chiseled",
+		{cracky=3},
+		{"quartz_chiseled.png"},
+		"Chiseled Quartz",
+		"chiseled",
+		0
+	)
+
+	register_stair_slab_panel_micro("quartz", "pillar", "quartz:pillar",
+		{cracky=3},
+		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+		"Quartz Pillar",
+		"pillar",
+		0
+	)
+
+	table.insert(circular_saw.known_stairs, "quartz:block")
+	table.insert(circular_saw.known_stairs, "quartz:chiseled")
+	table.insert(circular_saw.known_stairs, "quartz:pillar")
+end
+
+--
+-- Deprecated
+--
 
 if enable_horizontal_pillar then
-	--Quartz Pillar (horizontal)
+	-- Quartz Pillar (horizontal)
 	minetest.register_node("quartz:pillar_horizontal", {
 			description = "Quartz Pillar Horizontal",
 			tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
@@ -158,33 +199,3 @@ if enable_horizontal_pillar then
 			sounds = default.node_sound_glass_defaults(),
 	})
 end
-
-
---Compatibility with stairsplus
-
-if minetest.get_modpath("moreblocks") and enable_stairsplus then
-	register_stair_slab_panel_micro("quartz", "block", "quartz:block",
-	{cracky=3},
-	{"quartz_block.png"},
-	"Quartz Block",
-	"block",
-	0)
-	
-	register_stair_slab_panel_micro("quartz", "chiseled", "quartz:chiseled",
-	{cracky=3},
-	{"quartz_chiseled.png"},
-	"Chiseled Quartz",
-	"chiseled",
-	0)
-	
-	register_stair_slab_panel_micro("quartz", "pillar", "quartz:pillar",
-	{cracky=3},
-	{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
-	"Quartz Pillar",
-	"pillar",
-	0)
-	
-	table.insert(circular_saw.known_stairs, "quartz:block")
-	table.insert(circular_saw.known_stairs, "quartz:chiseled")
-	table.insert(circular_saw.known_stairs, "quartz:pillar")
-end	

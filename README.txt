@@ -1,12 +1,20 @@
-   ___                   _         __  __           _ 
+   ___                   _         __  __           _
   / _ \ _   _  __ _ _ __| |_ ____ |  \/  | ___   __| |
  | | | | | | |/ _` | '__| __|_  / | |\/| |/ _ \ / _` |
  | |_| | |_| | (_| | |  | |_ / /  | |  | | (_) | (_| |
   \__\_\\__,_|\__,_|_|   \__/___| |_|  |_|\___/ \__,_|
-    
 
 This mod adds quartz ore and some decorative blocks to minetest.
-                                                
+
+Version: 1.0
+License: MIT (see LICENSE.txt)
+
+Dependencies:
+stairs (found in minetest_game)
+moreblocks (optional, for stairsplus support)
+
+Please report bugs at the github issue tracker:
+https://github.com/4Evergreen4/quartz/issues/
 
 Crafting:
 
@@ -71,12 +79,3 @@ x|x|x
 x|c|x
 -----
 x|x|x
-
-
-License:
-
-CC BY-SA 3.0
-
-More info at http://creativecommons.org/licenses/by-sa/3.0/
-
-
