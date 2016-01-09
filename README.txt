@@ -6,7 +6,7 @@
 
 This mod adds quartz ore and some decorative blocks to minetest.
 
-Version: 1.0
+Version: 1.0.0
 License: MIT (see LICENSE.txt)
 
 Dependencies:
