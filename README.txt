@@ -15,7 +15,7 @@ stairs (found in minetest_game)
 moreblocks (optional, for stairsplus support)
 
 Please report bugs at the github issue tracker:
-https://github.com/4Evergreen4/quartz/issues/
+https://github.com/minetest-mods/quartz/issues/
 
 Crafting:
 
