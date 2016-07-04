@@ -1,10 +1,8 @@
-dofile(minetest.get_modpath("quartz").."/settings.txt")
+dofile(minetest.get_modpath("quartz").."/settings.lua")
 
---
---  Item Registration
---
+--Node Registration
 
---  Quartz Crystal
+--Quartz Crystal
 minetest.register_craftitem("quartz:quartz_crystal", {
 	description = "Quartz Crystal",
 	inventory_image = "quartz_crystal_full.png",
@@ -14,76 +12,75 @@ minetest.register_craftitem("quartz:quartz_crystal_piece", {
 	inventory_image = "quartz_crystal_piece.png",
 })
 
---
--- Node Registration
---
-
---  Ore
+--Ore
 minetest.register_node("quartz:quartz_ore", {
-	description = "Quartz Ore",
-	tiles = {"default_stone.png^quartz_ore.png"},
-	groups = {cracky=3, stone=1},
-	drop = 'quartz:quartz_crystal',
-	sounds = default.node_sound_stone_defaults(),
+         description = "Quartz Ore",
+ 	 tiles = {"default_stone.png^quartz_ore.png"},
+	 groups = {cracky=3, stone=1},
+	 drop = 'quartz:quartz_crystal',
+         sounds = default.node_sound_stone_defaults(),
 })
-
+	 
 minetest.register_ore({
-	ore_type = "scatter",
-	ore = "quartz:quartz_ore",
-	wherein = "default:stone",
-	clust_scarcity = 10*10*10,
-	clust_num_ores = 6,
-	clust_size = 5,
-	y_min = -31000,
-	y_max = -5,
+    ore_type       = "scatter",
+    ore            = "quartz:quartz_ore",
+    wherein        = "default:stone",
+    clust_scarcity = 10*10*10,
+    clust_num_ores = 6,
+    clust_size     = 5,
+    y_min     = -31000,
+    y_max     = -5,
 })
 
--- Quartz Block
+--Quartz Block
 minetest.register_node("quartz:block", {
 	description = "Quartz Block",
 	tiles = {"quartz_block.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 })
 
--- Chiseled Quartz
+--Chiseled Quartz
 minetest.register_node("quartz:chiseled", {
 	description = "Chiseled Quartz",
 	tiles = {"quartz_chiseled.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 })
 
--- Quartz Pillar
+--Quartz Pillar
 minetest.register_node("quartz:pillar", {
 	description = "Quartz Pillar",
-	paramtype2 = "facedir",
-	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+	tiles = {"quartz_pillar_side.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
-	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
+	sounds = default.node_sound_stone_defaults(),
 })
 
--- Stairs & Slabs
+
+--Stairs & Slabs
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_block.png"},
 		"Quartz stair",
 		"Quartz slab",
-		default.node_sound_glass_defaults())
+		default.node_sound_stone_defaults())
 
 stairs.register_slab("quartzstair", "quartz:pillar",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
 		"Quartz Pillar stair",
 		"Quartz Pillar slab",
-		default.node_sound_glass_defaults())
+		default.node_sound_stone_defaults())		
 
---
--- Crafting
---
+		
+		
+		
+		
+		
+		
+--Crafting
 
--- Quartz Crystal Piece
+--Quartz Crystal Piece
 minetest.register_craft({
 	output = '"quartz:quartz_crystal_piece" 3',
 	recipe = {
@@ -91,7 +88,7 @@ minetest.register_craft({
 	}
 })
 
--- Quartz Block
+--Quartz Block
 minetest.register_craft({
 	output = '"quartz:block" 4',
 	recipe = {
@@ -100,8 +97,8 @@ minetest.register_craft({
 		{'', '', ''}
 	}
 })
-
--- Chiseled Quartz
+	
+--Chiseled Quartz
 minetest.register_craft({
 	output = 'quartz:chiseled 2',
 	recipe = {
@@ -111,7 +108,7 @@ minetest.register_craft({
 	}
 })
 
--- Chiseled Quartz (for stairsplus)
+--Chiseled Quartz(for stairsplus)
 minetest.register_craft({
 	output = 'quartz:chiseled 2',
 	recipe = {
@@ -121,7 +118,7 @@ minetest.register_craft({
 	}
 })
 
--- Quartz Pillar
+--Quartz Pillar
 minetest.register_craft({
 	output = 'quartz:pillar 2',
 	recipe = {
@@ -131,71 +128,31 @@ minetest.register_craft({
 	}
 })
 
---
--- ABMS
---
+--Compatibility with stairsplus
 
-local dirs2 = {12, 9, 18, 7, 12}
-
--- Replace all instances of the horizontal quartz pillar with the
-minetest.register_abm({
-	nodenames = {"quartz:pillar_horizontal"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local fdir = node.param2 or 0
-			nfdir = dirs2[fdir+1]
-		minetest.add_node(pos, {name = "quartz:pillar", param2 = nfdir})
-	end,
-})
-
---
--- Compatibility with stairsplus
---
-
-if minetest.get_modpath("moreblocks") and ENABLE_STAIRSPLUS then
+if minetest.get_modpath("moreblocks") and enable_stairsplus then
 	register_stair_slab_panel_micro("quartz", "block", "quartz:block",
-		{cracky=3},
-		{"quartz_block.png"},
-		"Quartz Block",
-		"block",
-		0
-	)
-
+	{cracky=3},
+	{"quartz_block.png"},
+	"Quartz Block",
+	"block",
+	0)
+	
 	register_stair_slab_panel_micro("quartz", "chiseled", "quartz:chiseled",
-		{cracky=3},
-		{"quartz_chiseled.png"},
-		"Chiseled Quartz",
-		"chiseled",
-		0
-	)
-
+	{cracky=3},
+	{"quartz_chiseled.png"},
+	"Chiseled Quartz",
+	"chiseled",
+	0)
+	
 	register_stair_slab_panel_micro("quartz", "pillar", "quartz:pillar",
-		{cracky=3},
-		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
-		"Quartz Pillar",
-		"pillar",
-		0
-	)
-
+	{cracky=3},
+	{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+	"Quartz Pillar",
+	"pillar",
+	0)
+	
 	table.insert(circular_saw.known_stairs, "quartz:block")
 	table.insert(circular_saw.known_stairs, "quartz:chiseled")
 	table.insert(circular_saw.known_stairs, "quartz:pillar")
-end
-
---
--- Deprecated
---
-
-if ENABLE_HORIZONTAL_PILLAR then
-	-- Quartz Pillar (horizontal)
-	minetest.register_node("quartz:pillar_horizontal", {
-			description = "Quartz Pillar Horizontal",
-			tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
-			"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
-			paramtype2 = "facedir",
-			drop = 'quartz:pillar',
-			groups = {cracky=3, oddly_breakable_by_hand=1, not_in_creative_inventory=1},
-			sounds = default.node_sound_glass_defaults(),
-	})
-end
+end	

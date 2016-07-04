@@ -1,7 +1,7 @@
 -- Set this to true to allow usage of the stairsplus mod in moreblocks
 
-ENABLE_STAIRSPLUS = false
+enable_stairsplus = true
 
 -- This enables the old horizontal pillar block(deprecated, be sure to convert them back to normal pillars)
 
-ENABLE_HORIZONTAL_PILLAR = true
+enable_horizontal_pillar = false
