@@ -1,4 +1,4 @@
-dofile(minetest.get_modpath("quartz").."/settings.txt")
+local settings = Settings(minetest.get_modpath("quartz").."/settings.txt")
 
 --
 --  Item Registration
@@ -153,7 +153,7 @@ minetest.register_abm({
 -- Compatibility with stairsplus
 --
 
-if minetest.get_modpath("moreblocks") and ENABLE_STAIRSPLUS then
+if minetest.get_modpath("moreblocks") and settings:get_bool("ENABLE_STAIRSPLUS") then
 	register_stair_slab_panel_micro("quartz", "block", "quartz:block",
 		{cracky=3},
 		{"quartz_block.png"},
@@ -187,7 +187,7 @@ end
 -- Deprecated
 --
 
-if ENABLE_HORIZONTAL_PILLAR then
+if settings:get_bool("ENABLE_HORIZONTAL_PILLAR") then
 	-- Quartz Pillar (horizontal)
 	minetest.register_node("quartz:pillar_horizontal", {
 			description = "Quartz Pillar Horizontal",
