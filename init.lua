@@ -1,16 +1,20 @@
 local settings = Settings(minetest.get_modpath("quartz").."/settings.txt")
 
+-- internationalization boilerplate
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP.."/intllib.lua")
+
 --
 --  Item Registration
 --
 
 --  Quartz Crystal
 minetest.register_craftitem("quartz:quartz_crystal", {
-	description = "Quartz Crystal",
+	description = S("Quartz Crystal"),
 	inventory_image = "quartz_crystal_full.png",
 })
 minetest.register_craftitem("quartz:quartz_crystal_piece", {
-	description = "Quartz Crystal Piece",
+	description = S("Quartz Crystal Piece"),
 	inventory_image = "quartz_crystal_piece.png",
 })
 
@@ -20,7 +24,7 @@ minetest.register_craftitem("quartz:quartz_crystal_piece", {
 
 --  Ore
 minetest.register_node("quartz:quartz_ore", {
-	description = "Quartz Ore",
+	description = S("Quartz Ore"),
 	tiles = {"default_stone.png^quartz_ore.png"},
 	groups = {cracky=3, stone=1},
 	drop = 'quartz:quartz_crystal',
@@ -40,7 +44,7 @@ minetest.register_ore({
 
 -- Quartz Block
 minetest.register_node("quartz:block", {
-	description = "Quartz Block",
+	description = S("Quartz Block"),
 	tiles = {"quartz_block.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
@@ -48,7 +52,7 @@ minetest.register_node("quartz:block", {
 
 -- Chiseled Quartz
 minetest.register_node("quartz:chiseled", {
-	description = "Chiseled Quartz",
+	description = S("Chiseled Quartz"),
 	tiles = {"quartz_chiseled.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
@@ -56,7 +60,7 @@ minetest.register_node("quartz:chiseled", {
 
 -- Quartz Pillar
 minetest.register_node("quartz:pillar", {
-	description = "Quartz Pillar",
+	description = S("Quartz Pillar"),
 	paramtype2 = "facedir",
 	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
@@ -68,15 +72,15 @@ minetest.register_node("quartz:pillar", {
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_block.png"},
-		"Quartz stair",
-		"Quartz slab",
+		S("Quartz stair"),
+		S("Quartz slab"),
 		default.node_sound_glass_defaults())
 
-stairs.register_slab("quartzstair", "quartz:pillar",
+stairs.register_stair_and_slab("quartzstair", "quartz:pillar",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
-		"Quartz Pillar stair",
-		"Quartz Pillar slab",
+		S("Quartz Pillar stair"),
+		S("Quartz Pillar slab"),
 		default.node_sound_glass_defaults())
 
 --
