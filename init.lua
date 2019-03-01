@@ -62,7 +62,8 @@ minetest.register_node("quartz:chiseled", {
 minetest.register_node("quartz:pillar", {
 	description = S("Quartz Pillar"),
 	paramtype2 = "facedir",
-	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+	tiles = {"quartz_pillar_top.png", "quartz_pillar_top.png",
+		"quartz_pillar_side.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
 	on_place = minetest.rotate_node
@@ -78,7 +79,8 @@ stairs.register_stair_and_slab("quartzblock", "quartz:block",
 
 stairs.register_stair_and_slab("quartzstair", "quartz:pillar",
 		{cracky=3, oddly_breakable_by_hand=1},
-		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+		{"quartz_pillar_top.png", "quartz_pillar_top.png",
+			"quartz_pillar_side.png"},
 		S("Quartz Pillar stair"),
 		S("Quartz Pillar slab"),
 		default.node_sound_glass_defaults())
@@ -174,7 +176,8 @@ if minetest.global_exists("stairsplus") then
 
 	stairsplus:register_all("quartz", "pillar", "quartz:pillar", {
 		description = "Quartz Pillar",
-		tiles  = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+		tiles  = {"quartz_pillar_top.png", "quartz_pillar_top.png",
+			"quartz_pillar_side.png"},
 		groups = {cracky=3},
 		sounds = default.node_sound_glass_defaults()
 	})
@@ -188,11 +191,14 @@ if settings:get_bool("ENABLE_HORIZONTAL_PILLAR") then
 	-- Quartz Pillar (horizontal)
 	minetest.register_node("quartz:pillar_horizontal", {
 			description = "Quartz Pillar Horizontal",
-			tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png", "quartz_pillar_side.png^[transformR90",
-			"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png", "quartz_pillar_top.png"},
+			tiles = {"quartz_pillar_side.png", "quartz_pillar_side.png",
+				"quartz_pillar_side.png^[transformR90",
+				"quartz_pillar_side.png^[transformR90", "quartz_pillar_top.png",
+				"quartz_pillar_top.png"},
 			paramtype2 = "facedir",
 			drop = 'quartz:pillar',
-			groups = {cracky=3, oddly_breakable_by_hand=1, not_in_creative_inventory=1},
+			groups = {cracky=3, oddly_breakable_by_hand=1,
+				not_in_creative_inventory=1},
 			sounds = default.node_sound_glass_defaults(),
 	})
 end
