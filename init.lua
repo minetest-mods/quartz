@@ -157,34 +157,27 @@ minetest.register_abm({
 -- Compatibility with stairsplus
 --
 
-if minetest.get_modpath("moreblocks") and settings:get_bool("ENABLE_STAIRSPLUS") then
-	register_stair_slab_panel_micro("quartz", "block", "quartz:block",
-		{cracky=3},
-		{"quartz_block.png"},
-		"Quartz Block",
-		"block",
-		0
-	)
+if minetest.global_exists("stairsplus") then
+	stairsplus:register_all("quartz", "block", "quartz:block", {
+		description = "Quartz Block",
+		tiles  = {"quartz_block.png"},
+		groups = {cracky=3},
+		sounds = default.node_sound_glass_defaults()
+	})
 
-	register_stair_slab_panel_micro("quartz", "chiseled", "quartz:chiseled",
-		{cracky=3},
-		{"quartz_chiseled.png"},
-		"Chiseled Quartz",
-		"chiseled",
-		0
-	)
+	stairsplus:register_all("quartz", "chiseled", "quartz:chiseled", {
+		description = "Chiseled Quartz",
+		tiles  = {"quartz_chiseled.png"},
+		groups = {cracky=3},
+		sounds = default.node_sound_glass_defaults()
+	})
 
-	register_stair_slab_panel_micro("quartz", "pillar", "quartz:pillar",
-		{cracky=3},
-		{"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
-		"Quartz Pillar",
-		"pillar",
-		0
-	)
-
-	table.insert(circular_saw.known_stairs, "quartz:block")
-	table.insert(circular_saw.known_stairs, "quartz:chiseled")
-	table.insert(circular_saw.known_stairs, "quartz:pillar")
+	stairsplus:register_all("quartz", "pillar", "quartz:pillar", {
+		description = "Quartz Pillar",
+		tiles  = {"quartz_pillar_top.png", "quartz_pillar_top.png", "quartz_pillar_side.png"},
+		groups = {cracky=3},
+		sounds = default.node_sound_glass_defaults()
+	})
 end
 
 --
