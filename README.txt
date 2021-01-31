@@ -12,7 +12,6 @@ License: MIT (see LICENSE.txt)
 Dependencies:
 default (found in minetest_game)
 stairs (found in minetest_game)
-intllib (optional, for translations)
 moreblocks or stairsplus (optional, for stairsplus support)
 
 Please report bugs at the GitHub issue tracker:

@@ -1,8 +1,6 @@
 local settings = Settings(minetest.get_modpath("quartz").."/settings.txt")
 
--- internationalization boilerplate
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP.."/intllib.lua")
+local S = minetest.get_translator("quartz")
 
 --
 --  Item Registration
