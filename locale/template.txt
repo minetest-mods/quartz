@@ -1,0 +1,19 @@
+# textdomain: quartz
+
+
+### init.lua ###
+
+Chiseled Quartz=
+Inner Quartz Pillar Stair=
+Inner Quartz Stair=
+Outer Quartz Pillar Stair=
+Outer Quartz Stair=
+Quartz Block=
+Quartz Crystal=
+Quartz Crystal Piece=
+Quartz Ore=
+Quartz Pillar=
+Quartz Pillar Slab=
+Quartz Pillar Stair=
+Quartz Slab=
+Quartz Stair=

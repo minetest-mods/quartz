@@ -1,8 +1,6 @@
 local settings = Settings(minetest.get_modpath("quartz").."/settings.txt")
 
--- internationalization boilerplate
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP.."/intllib.lua")
+local S = minetest.get_translator("quartz")
 
 --
 --  Item Registration
@@ -73,17 +71,25 @@ minetest.register_node("quartz:pillar", {
 stairs.register_stair_and_slab("quartzblock", "quartz:block",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_block.png"},
-		S("Quartz stair"),
-		S("Quartz slab"),
-		default.node_sound_glass_defaults())
+		S("Quartz Stair"),
+		S("Quartz Slab"),
+		default.node_sound_glass_defaults(),
+		nil,
+		S("Inner Quartz Stair"),
+		S("Outer Quartz Stair")
+	)
 
 stairs.register_stair_and_slab("quartzstair", "quartz:pillar",
 		{cracky=3, oddly_breakable_by_hand=1},
 		{"quartz_pillar_top.png", "quartz_pillar_top.png",
 			"quartz_pillar_side.png"},
-		S("Quartz Pillar stair"),
-		S("Quartz Pillar slab"),
-		default.node_sound_glass_defaults())
+		S("Quartz Pillar Stair"),
+		S("Quartz Pillar Slab"),
+		default.node_sound_glass_defaults(),
+		nil,
+		S("Inner Quartz Pillar Stair"),
+		S("Outer Quartz Pillar Stair")
+	)
 
 --
 -- Crafting
