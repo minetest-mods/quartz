@@ -190,3 +190,6 @@ if settings:get_bool("ENABLE_HORIZONTAL_PILLAR") then
 			sounds = default.node_sound_glass_defaults(),
 	})
 end
+
+-- print to log after mod was loaded successfully
+print ("[MOD] Quartz loaded")
