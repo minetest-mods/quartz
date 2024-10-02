@@ -4,12 +4,16 @@
 ### init.lua ###
 
 Chiseled Quartz=Quartz ciselé
+Inner Quartz Pillar Stair=Escalier intérieur en pilier en quartz
+Inner Quartz Stair=Escalier intérieur en quartz
+Outer Quartz Pillar Stair=Escalier extérieur en pilier de quartz
+Outer Quartz Stair=Escalier extérieur en quartz
 Quartz Block=Bloc de quartz
 Quartz Crystal=Cristal de quartz
 Quartz Crystal Piece=Morceau de cristal de quartz
 Quartz Ore=Minerai de quartz
 Quartz Pillar=Pilier en quartz
-Quartz Pillar slab=Dalle en pilier en quartz
-Quartz Pillar stair=Escalier en pilier en quartz
-Quartz slab=Dalle en quartz
-Quartz stair=Escalier en quartz
+Quartz Pillar Slab=Dalle en pilier en quartz
+Quartz Pillar Stair=Escalier en pilier en quartz
+Quartz Slab=Dalle en quartz
+Quartz Stair=Escalier en quartz
